@@ -45,6 +45,6 @@ class VerifyHostnameNoInput(Job):
                     iface, f"Successfully added to {iface.name} on {device.name}!"
                 )
         except:
-            self.log_success(
+            self.log_failure(
                 iface, f"VLAN {vlan} failed to add to {iface.name} on {device.name}...."
             )
