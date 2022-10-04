@@ -35,9 +35,9 @@ class VerifyHostnameNoInput(Job):
         try:
             with ConnectHandler(
                 device_type=device.platform.slug,
-                host=device.primary_ip.address.split("/")[0],
+                host=str(device.primary_ip.address.ip),
                 username=settings.NAPALM_USERNAME,
-                password=settings.NAPALM_USERNAME,
+                password=settings.NAPALM_PASSWORD,
                 conn_timeout=2,
             ) as conn:
                 conn.send_config(COMMAND_MAP[device.platform.slug] % (iface, vlan))
